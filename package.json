@@ -1,0 +1,11 @@
+{
+  "name": "GoBarber-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Kenedw/GoBarber-server.git",
+  "author": "Kened Wanderson Cruz Oliveira",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
