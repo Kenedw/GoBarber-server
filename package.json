@@ -5,7 +5,15 @@
   "repository": "git@github.com:Kenedw/GoBarber-server.git",
   "author": "Kened Wanderson Cruz Oliveira",
   "license": "MIT",
+  "scripts": {
+    "dev":"nodemon src/server.js",
+    "start":"",
+    "build":""
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "sucrase": "^3.10.1"
   }
 }
