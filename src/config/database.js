@@ -1,5 +1,5 @@
 module.exports = {
-  dialect: 'posgres',
+  dialect: 'postgres',
   host: '192.168.99.100',
   username: 'postgres',
   password: 'docker',
@@ -9,4 +9,5 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
+  timezone: '-03:00',
 };
