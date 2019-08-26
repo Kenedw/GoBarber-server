@@ -7,8 +7,8 @@ class App {
   constructor() {
     this.server = express();
 
-    this.server();
     this.middlewares();
+    this.routes();
   }
 
   middlewares() {
