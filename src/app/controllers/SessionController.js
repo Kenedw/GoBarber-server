@@ -9,11 +9,7 @@ class SessionController {
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
-      password: Yup.string()
-        .min(6)
-        .when('oldPassword', (oldPassword, field) =>
-          oldPassword ? field.required() : field
-        ),
+      password: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
