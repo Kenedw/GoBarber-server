@@ -11,11 +11,11 @@ const models = [User, File, Appointment];
 
 class Database {
   constructor() {
-    this.postgres();
+    this.init();
     this.mongo();
   }
 
-  postgres() {
+  init() {
     this.connection = new Sequelize(databaseConfig);
 
     models

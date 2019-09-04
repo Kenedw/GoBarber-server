@@ -1,10 +1,12 @@
 import * as yup from 'yup';
-import { startOfHour, parseISO, isBefore, addHours } from 'date-fns';
+import { startOfHour, parseISO, isBefore, addHours, format } from 'date-fns';
 import { Op } from 'sequelize';
+import pt from 'date-fns/locale/pt';
 
 import User from '../models/Users';
 import Appointment from '../models/Appointment';
 import File from '../models/File';
+import Notification from '../schemas/Notification';
 
 class AppointmentController {
   async index(req, res) {
@@ -61,6 +63,15 @@ class AppointmentController {
     }
 
     /**
+     * check if provider if yourself
+     */
+    if (req.userId === provider_id) {
+      return res
+        .status(401)
+        .json({ error: 'You cannot create appointments with yourself' });
+    }
+
+    /**
      * check for past dates
      */
     const hourStart = startOfHour(parseISO(date));
@@ -92,6 +103,23 @@ class AppointmentController {
       user_id: req.userId,
       provider_id,
       date,
+    });
+
+    /**
+     * Notify appointment provider
+     */
+    const user = await User.findByPk(req.userId);
+    const formattedDate = format(
+      new Date(date),
+      "'dia' dd 'de' MMMM', ás' H:mm'h'",
+      {
+        locale: pt,
+      }
+    );
+
+    await Notification.create({
+      content: `Novo agendamento de ${user.name} para o ${formattedDate}`,
+      user: provider_id,
     });
 
     return res.json({ appointment });
