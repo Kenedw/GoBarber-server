@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "start": "",
     "build": "",
-    "fixEslint": "eslint --fix src --ext .js"
+    "fixEslint": "eslint --fix src --ext .js",
+    "debug": "node --inspect-brk -r sucrase/register src/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
