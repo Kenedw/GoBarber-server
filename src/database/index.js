@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
 
 import databaseConfig from '../config/database';
+import mongoConfig from '../config/mongo';
 
 import User from '../app/models/Users';
 import File from '../app/models/File';
@@ -25,8 +26,8 @@ class Database {
 
   mongo() {
     this.mongoConnection = mongoose.connect(
-      'mongodb://192.168.99.100:27017/gobarber',
-      { useNewUrlParser: true, useFindAndModify: true }
+      mongoConfig.url,
+      mongoConfig.options
     );
   }
 }
