@@ -1,3 +1,8 @@
 import App from './app';
 
-App.listen(3333);
+const server = App.listen(3333, () => {
+  let { address } = server.address();
+  const { port } = server.address();
+  address = address === '::' ? 'localhost' : address;
+  console.log(`running at http://${address}:${port}`);
+});

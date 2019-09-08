@@ -97,7 +97,7 @@ class AppointmentController {
         provider_id,
         canceled_at: null,
         date: {
-          [Op.between]: [date, addHours(new Date(date), 1)],
+          [Op.between]: [hourStart, addHours(new Date(date), 1)],
         },
       },
     });
