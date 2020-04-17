@@ -1,5 +1,7 @@
-node_modules
-*.lock
+/node_modules
+/dist
+
+*.log
 temp/uploads/*
 .env
 .env.prod

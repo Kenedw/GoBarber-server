@@ -16,7 +16,7 @@ class Database {
     this.mongo();
   }
 
-  init() {
+  init(): void {
     this.connection = new Sequelize(databaseConfig);
 
     models
@@ -24,10 +24,10 @@ class Database {
       .map(model => model.associate && model.associate(this.connection.models));
   }
 
-  mongo() {
+  mongo(): void {
     this.mongoConnection = mongoose.connect(
       mongoConfig.url,
-      mongoConfig.options
+      mongoConfig.options,
     );
   }
 }

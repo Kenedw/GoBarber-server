@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import {
+import pt, {
   startOfHour,
   parseISO,
   isBefore,
@@ -8,7 +8,6 @@ import {
   subHours,
 } from 'date-fns';
 import { Op } from 'sequelize';
-import pt from 'date-fns/locale/pt';
 
 import User from '../models/Users';
 import Appointment from '../models/Appointment';
@@ -123,7 +122,7 @@ class AppointmentController {
       "'dia' dd 'de' MMMM', ás' H:mm'h'",
       {
         locale: pt,
-      }
+      },
     );
 
     await Notification.create({

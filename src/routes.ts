@@ -13,7 +13,7 @@ import AvailableController from './app/controllers/AvailableController';
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
 
-const routes = new Router();
+const routes = Router();
 const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
