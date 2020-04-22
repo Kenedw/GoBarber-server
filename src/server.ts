@@ -1,8 +1,8 @@
 import App from './app';
 
 const server = App.listen(3333, () => {
-  let { address } = server.address();
-  const { port } = server.address();
-  address = address === '::' ? 'localhost' : address;
-  console.log(`running at http://${address}:${port}`);
+  const addressInfo = server.address();
+  if (addressInfo && typeof addressInfo !== 'string')
+    console.log(`running at http://${addressInfo.address}:${addressInfo.port}`);
+  else console.log(addressInfo);
 });

@@ -1,35 +1,31 @@
-import Sequelize from 'sequelize';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
-import databaseConfig from '../config/database';
-import mongoConfig from '../config/mongo';
+import { createConnection } from 'typeorm';
+// import mongoConfig from '../config/mongo';
 
-import User from '../app/models/Users';
-import File from '../app/models/File';
-import Appointment from '../app/models/Appointment';
+// import User from '../app/models/Users';
+// import File from '../app/models/File';
+// import Appointment from '../app/models/Appointment';
 
-const models = [User, File, Appointment];
+// const models = [User, File, Appointment];
 
 class Database {
   constructor() {
     this.init();
-    this.mongo();
+    // this.mongo();
   }
 
   init(): void {
-    this.connection = new Sequelize(databaseConfig);
-
-    models
-      .map(model => model.init(this.connection))
-      .map(model => model.associate && model.associate(this.connection.models));
+    createConnection();
+    // this.connection = new Sequelize(databaseConfig);
+    // models
+    //   .map(model => model.init(this.connection))
+    //   .map(model => model.associate && model.associate(this.connection.models));
   }
 
-  mongo(): void {
-    this.mongoConnection = mongoose.connect(
-      mongoConfig.url,
-      mongoConfig.options,
-    );
-  }
+  // mongo(): void {
+  // mongoose.connect(mongoConfig.url, mongoConfig.options);
+  // }
 }
 
 export default new Database();
